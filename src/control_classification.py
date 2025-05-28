@@ -1,6 +1,5 @@
 import warnings
 import os
-from typing import List
 from langchain import hub
 from typing import Any, List, Dict
 from langchain_core.output_parsers import StrOutputParser
