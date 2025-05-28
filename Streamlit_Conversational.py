@@ -118,19 +118,8 @@ if user_input:
                 messages=st.session_state['conversation'],
                 stream=True
             )
-            st.write_stream(stream)
-            # Append the full streamed reply to history
-            full_reply = ""
-            for chunk in stream:
-                token = chunk.choices[0].delta.content
-                if token:
-                    full_reply += token
-
-            print(full_reply)
-            st.session_state['conversation'].append({
-                "role": "assistant",
-                "content": full_reply
-            })
+            response = st.write_stream(stream)
+        st.session_state.conversation.append({"role": "assistant", "content": response})
 
         # --------------------------------------------
         # DOWNLOAD OPTION
